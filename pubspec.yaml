@@ -4,7 +4,7 @@ description: 'Woocommerce Rest API client'
 homepage: 'https://github.com/erfanshekari/woocommerce_client'
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.12.0 <4.0.0'
 
 dependencies:
   collection: '^1.17.0'
