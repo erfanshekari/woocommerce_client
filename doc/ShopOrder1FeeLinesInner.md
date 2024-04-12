@@ -1,0 +1,22 @@
+# woocommerce_client.model.ShopOrder1FeeLinesInner
+
+## Load the model package
+```dart
+import 'package:woocommerce_client/woocommerce_client.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** | Item ID. | [optional] 
+**name** | **String** | Fee name. | [optional] 
+**taxClass** | **String** | Tax class of fee. | [optional] 
+**taxStatus** | **String** | Tax status of fee. | [optional] 
+**total** | **String** | Line total (after discounts). | [optional] 
+**totalTax** | **String** | Line total tax (after discounts). | [optional] 
+**taxes** | [**List<ShopOrder1LineItemsInnerTaxesInner>**](ShopOrder1LineItemsInnerTaxesInner.md) | Line taxes. | [optional] [default to const []]
+**metaData** | [**List<ShopCoupon1MetaDataInner>**](ShopCoupon1MetaDataInner.md) | Meta data. | [optional] [default to const []]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
