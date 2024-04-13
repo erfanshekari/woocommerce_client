@@ -4,7 +4,7 @@ A Dart package built using openapi. With further customization and changes to ac
 - Woocommerce API v3
 - HTTP and HTTPS support
 - Null-Safety
-- supports all methods and models
+- Supports all methods and models
 
 ## Requirements
 
@@ -16,7 +16,7 @@ Dart 2.12 or later
 Include woocommerce_client in your pubspec.yaml file:
 ```yaml
 dependencies:
-  woocommerce_client: ^1.0.0
+  woocommerce_client: ^1.0.1
 
 ```
 
