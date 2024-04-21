@@ -55,7 +55,7 @@ String parameterToString(dynamic value) {
     return '';
   }
   if (value is DateTime) {
-    return value.toUtc().toIso8601String();
+    return value.toUtc().toIso8601String().split('T')[0];
   }
   return value.toString();
 }
