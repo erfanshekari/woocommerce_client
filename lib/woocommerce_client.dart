@@ -3,7 +3,6 @@
 library woocommerce_client;
 
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 import "dart:collection";
 import "dart:math";
@@ -12,7 +11,6 @@ import 'package:crypto/crypto.dart' as crypto;
 
 import 'package:collection/collection.dart';
 import 'package:http/http.dart';
-import 'package:intl/intl.dart';
 
 part 'utils/query_string.dart';
 

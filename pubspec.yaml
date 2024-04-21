@@ -9,5 +9,4 @@ environment:
 dependencies:
   collection: '^1.17.0'
   http: '^1.2.1'
-  intl: '^0.18.1'
   crypto: '^3.0.3'
