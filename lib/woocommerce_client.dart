@@ -3,6 +3,7 @@
 library woocommerce_client;
 
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import "dart:collection";
 import "dart:math";
@@ -81,6 +82,7 @@ part 'model/report_customer_total.dart';
 part 'model/report_order_total.dart';
 part 'model/report_product_total.dart';
 part 'model/report_review_total.dart';
+part 'model/sales_report_total.dart';
 part 'model/sales_report.dart';
 part 'model/setting.dart';
 part 'model/setting_group.dart';
@@ -133,7 +135,6 @@ part 'model/webhook2.dart';
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
 const _deepEquality = DeepCollectionEquality();
-final _dateFormatter = DateFormat('yyyy-MM-dd');
 final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
 final _regMap = RegExp(r'^Map<String,(.*)>$');

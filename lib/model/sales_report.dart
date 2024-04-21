@@ -23,7 +23,7 @@ class SalesReport {
     this.totalRefunds,
     this.totalDiscount,
     this.totalsGroupedBy,
-    this.totals = const [],
+    this.totals,
   });
 
   /// Gross sales in the period.
@@ -117,7 +117,7 @@ class SalesReport {
   String? totalsGroupedBy;
 
   /// Totals.
-  List<int> totals;
+  Map<String, SalesReportTotal>? totals;
 
   @override
   bool operator ==(Object other) =>
@@ -241,9 +241,7 @@ class SalesReport {
         totalRefunds: mapValueOfType<int>(json, r'total_refunds'),
         totalDiscount: mapValueOfType<int>(json, r'total_discount'),
         totalsGroupedBy: mapValueOfType<String>(json, r'totals_grouped_by'),
-        totals: json[r'totals'] is Iterable
-            ? (json[r'totals'] as Iterable).cast<int>().toList(growable: false)
-            : const [],
+        totals: SalesReportTotal.mapFromJson(json['totals']),
       );
     }
     return null;
