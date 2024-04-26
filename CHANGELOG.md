@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Fix reportsOrdersTotalsGet API method
+
 ## 1.0.2
 
 * Fix DateTime in url parameters
