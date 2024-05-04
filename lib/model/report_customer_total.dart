@@ -43,7 +43,7 @@ class ReportCustomerTotal {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? total;
+  int? total;
 
   @override
   bool operator ==(Object other) =>
@@ -107,7 +107,7 @@ class ReportCustomerTotal {
       return ReportCustomerTotal(
         slug: mapValueOfType<String>(json, r'slug'),
         name: mapValueOfType<String>(json, r'name'),
-        total: mapValueOfType<String>(json, r'total'),
+        total: mapValueOfType<int>(json, r'total'),
       );
     }
     return null;

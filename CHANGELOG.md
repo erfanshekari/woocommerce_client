@@ -1,3 +1,7 @@
+## 1.0.
+
+* Fix reportsCustomersTotalsGet method
+
 ## 1.0.3
 
 * Fix reportsOrdersTotalsGet API method
