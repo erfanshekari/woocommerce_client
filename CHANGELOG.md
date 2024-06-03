@@ -1,3 +1,7 @@
+## 1.0.6
+
+* Fix inner properties of ShopOrder model
+
 ## 1.0.5
 
 * Fix ShopOrder version property
