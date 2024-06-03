@@ -28,6 +28,7 @@ class ShopOrder1LineItemsInner {
     this.metaData = const [],
     this.sku,
     this.price,
+    this.image,
   });
 
   /// Item ID.
@@ -64,7 +65,7 @@ class ShopOrder1LineItemsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? productId;
+  int? productId;
 
   /// Variation ID, if applicable.
   ///
@@ -153,6 +154,8 @@ class ShopOrder1LineItemsInner {
   ///
   num? price;
 
+  ShopOrder1LineItemsImageInner? image;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -168,6 +171,7 @@ class ShopOrder1LineItemsInner {
           other.subtotalTax == subtotalTax &&
           other.total == total &&
           other.totalTax == totalTax &&
+          other.image == image &&
           _deepEquality.equals(other.taxes, taxes) &&
           _deepEquality.equals(other.metaData, metaData) &&
           other.sku == sku &&
@@ -187,6 +191,7 @@ class ShopOrder1LineItemsInner {
       (subtotalTax == null ? 0 : subtotalTax!.hashCode) +
       (total == null ? 0 : total!.hashCode) +
       (totalTax == null ? 0 : totalTax!.hashCode) +
+      (image == null ? 0 : image.hashCode) +
       (taxes.hashCode) +
       (metaData.hashCode) +
       (sku == null ? 0 : sku!.hashCode) +
@@ -194,7 +199,7 @@ class ShopOrder1LineItemsInner {
 
   @override
   String toString() =>
-      'ShopOrder1LineItemsInner[id=$id, name=$name, parentName=$parentName, productId=$productId, variationId=$variationId, quantity=$quantity, taxClass=$taxClass, subtotal=$subtotal, subtotalTax=$subtotalTax, total=$total, totalTax=$totalTax, taxes=$taxes, metaData=$metaData, sku=$sku, price=$price]';
+      'ShopOrder1LineItemsInner[id=$id, name=$name, parentName=$parentName, productId=$productId, variationId=$variationId, quantity=$quantity, taxClass=$taxClass, subtotal=$subtotal, subtotalTax=$subtotalTax, total=$total, totalTax=$totalTax, taxes=$taxes, metaData=$metaData, sku=$sku, price=$price image=$image]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -253,6 +258,7 @@ class ShopOrder1LineItemsInner {
     } else {
       json[r'total_tax'] = null;
     }
+    json['image'] = this.image?.toJson();
     json[r'taxes'] = this.taxes;
     json[r'meta_data'] = this.metaData;
     if (this.sku != null) {
@@ -292,7 +298,7 @@ class ShopOrder1LineItemsInner {
         id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         parentName: mapValueOfType<String>(json, r'parent_name'),
-        productId: mapValueOfType<String>(json, r'product_id'),
+        productId: mapValueOfType<int>(json, r'product_id'),
         variationId: mapValueOfType<int>(json, r'variation_id'),
         quantity: mapValueOfType<int>(json, r'quantity'),
         taxClass: mapValueOfType<String>(json, r'tax_class'),
@@ -300,6 +306,7 @@ class ShopOrder1LineItemsInner {
         subtotalTax: mapValueOfType<String>(json, r'subtotal_tax'),
         total: mapValueOfType<String>(json, r'total'),
         totalTax: mapValueOfType<String>(json, r'total_tax'),
+        image: ShopOrder1LineItemsImageInner.fromJson(json['image']),
         taxes: ShopOrder1LineItemsInnerTaxesInner.listFromJson(json[r'taxes']),
         metaData: ShopOrder1LineItemsInnerMetaDataInner.listFromJson(
             json[r'meta_data']),
@@ -360,5 +367,116 @@ class ShopOrder1LineItemsInner {
   }
 
   /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{};
+}
+
+class ShopOrder1LineItemsImageInner {
+  ShopOrder1LineItemsImageInner({
+    this.id,
+    this.src,
+  });
+
+  String? id;
+
+  String? src;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ShopOrder1LineItemsImageInner &&
+          other.id == id &&
+          other.src == src;
+
+  @override
+  int get hashCode =>
+      (id == null ? 0 : id!.hashCode) + (src == null ? 0 : src!.hashCode);
+
+  @override
+  String toString() => 'ShopOrder1LineItemsImageInner[id=$id src=$src]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
+    if (this.src != null) {
+      json[r'src'] = this.src;
+    } else {
+      json[r'src'] = null;
+    }
+    return json;
+  }
+
+  static ShopOrder1LineItemsImageInner? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "ShopOrder1LineItemsImageInner[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "ShopOrder1LineItemsImageInner[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return ShopOrder1LineItemsImageInner(
+        id: mapValueOfType<String>(json, r'id'),
+        src: mapValueOfType<String>(json, r'src'),
+      );
+    }
+    return null;
+  }
+
+  static List<ShopOrder1LineItemsImageInner> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <ShopOrder1LineItemsImageInner>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ShopOrder1LineItemsImageInner.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, ShopOrder1LineItemsImageInner> mapFromJson(dynamic json) {
+    final map = <String, ShopOrder1LineItemsImageInner>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ShopOrder1LineItemsImageInner.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  static Map<String, List<ShopOrder1LineItemsImageInner>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<ShopOrder1LineItemsImageInner>>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = ShopOrder1LineItemsImageInner.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
   static const requiredKeys = <String>{};
 }
