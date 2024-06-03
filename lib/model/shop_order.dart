@@ -109,7 +109,7 @@ class ShopOrder {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? version;
+  String? version;
 
   /// Order status.
   ShopOrderStatusEnum? status;
@@ -689,7 +689,7 @@ class ShopOrder {
         number: mapValueOfType<String>(json, r'number'),
         orderKey: mapValueOfType<String>(json, r'order_key'),
         createdVia: mapValueOfType<String>(json, r'created_via'),
-        version: mapValueOfType<int>(json, r'version'),
+        version: mapValueOfType<String>(json, r'version'),
         status: ShopOrderStatusEnum.fromJson(json[r'status']),
         currency: ShopOrderCurrencyEnum.fromJson(json[r'currency']),
         dateCreated: mapValueOfType<String>(json, r'date_created'),
