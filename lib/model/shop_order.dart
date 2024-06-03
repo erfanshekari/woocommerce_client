@@ -55,6 +55,10 @@ class ShopOrder {
     this.couponLines = const [],
     this.refunds = const [],
     this.setPaid,
+    this.currencySymbol,
+    this.isEditable,
+    this.needsPayment,
+    this.needsProcessing,
   });
 
   /// Unique identifier for the resource.
@@ -379,6 +383,14 @@ class ShopOrder {
   ///
   bool? setPaid;
 
+  String? currencySymbol;
+
+  bool? isEditable;
+
+  bool? needsPayment;
+
+  bool? needsProcessing;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -416,6 +428,10 @@ class ShopOrder {
           other.datePaidGmt == datePaidGmt &&
           other.dateCompleted == dateCompleted &&
           other.dateCompletedGmt == dateCompletedGmt &&
+          other.currencySymbol == currencySymbol &&
+          other.needsProcessing == needsProcessing &&
+          other.isEditable == isEditable &&
+          other.needsPayment == needsPayment &&
           other.cartHash == cartHash &&
           _deepEquality.equals(other.metaData, metaData) &&
           _deepEquality.equals(other.lineItems, lineItems) &&
@@ -463,6 +479,7 @@ class ShopOrder {
       (dateCompleted == null ? 0 : dateCompleted!.hashCode) +
       (dateCompletedGmt == null ? 0 : dateCompletedGmt!.hashCode) +
       (cartHash == null ? 0 : cartHash!.hashCode) +
+      (isEditable == null ? 0 : isEditable.hashCode) +
       (metaData.hashCode) +
       (lineItems.hashCode) +
       (taxLines.hashCode) +
@@ -470,11 +487,14 @@ class ShopOrder {
       (feeLines.hashCode) +
       (couponLines.hashCode) +
       (refunds.hashCode) +
+      (currencySymbol == null ? 0 : currencySymbol.hashCode) +
+      (needsPayment == null ? 0 : needsPayment.hashCode) +
+      (needsProcessing == null ? 0 : needsProcessing.hashCode) +
       (setPaid == null ? 0 : setPaid!.hashCode);
 
   @override
   String toString() =>
-      'ShopOrder[id=$id, parentId=$parentId, number=$number, orderKey=$orderKey, createdVia=$createdVia, version=$version, status=$status, currency=$currency, dateCreated=$dateCreated, dateCreatedGmt=$dateCreatedGmt, dateModified=$dateModified, dateModifiedGmt=$dateModifiedGmt, discountTotal=$discountTotal, discountTax=$discountTax, shippingTotal=$shippingTotal, shippingTax=$shippingTax, cartTax=$cartTax, total=$total, totalTax=$totalTax, pricesIncludeTax=$pricesIncludeTax, customerId=$customerId, customerIpAddress=$customerIpAddress, customerUserAgent=$customerUserAgent, customerNote=$customerNote, billing=$billing, shipping=$shipping, paymentMethod=$paymentMethod, paymentMethodTitle=$paymentMethodTitle, transactionId=$transactionId, datePaid=$datePaid, datePaidGmt=$datePaidGmt, dateCompleted=$dateCompleted, dateCompletedGmt=$dateCompletedGmt, cartHash=$cartHash, metaData=$metaData, lineItems=$lineItems, taxLines=$taxLines, shippingLines=$shippingLines, feeLines=$feeLines, couponLines=$couponLines, refunds=$refunds, setPaid=$setPaid]';
+      'ShopOrder[id=$id, parentId=$parentId, number=$number, orderKey=$orderKey, createdVia=$createdVia, version=$version, status=$status, currency=$currency, dateCreated=$dateCreated, dateCreatedGmt=$dateCreatedGmt, dateModified=$dateModified, dateModifiedGmt=$dateModifiedGmt, discountTotal=$discountTotal, discountTax=$discountTax, shippingTotal=$shippingTotal, shippingTax=$shippingTax, cartTax=$cartTax, total=$total, totalTax=$totalTax, pricesIncludeTax=$pricesIncludeTax, customerId=$customerId, customerIpAddress=$customerIpAddress, customerUserAgent=$customerUserAgent, customerNote=$customerNote, billing=$billing, shipping=$shipping, paymentMethod=$paymentMethod, paymentMethodTitle=$paymentMethodTitle, transactionId=$transactionId, datePaid=$datePaid, datePaidGmt=$datePaidGmt, dateCompleted=$dateCompleted, dateCompletedGmt=$dateCompletedGmt, cartHash=$cartHash, metaData=$metaData, lineItems=$lineItems, taxLines=$taxLines, shippingLines=$shippingLines, feeLines=$feeLines, couponLines=$couponLines, refunds=$refunds, setPaid=$setPaid currencySymbol=$currencySymbol isEditable=$isEditable needsPayment=$needsPayment]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -492,6 +512,26 @@ class ShopOrder {
       json[r'number'] = this.number;
     } else {
       json[r'number'] = null;
+    }
+    if (this.currencySymbol != null) {
+      json[r'currency_symbol'] = this.currencySymbol;
+    } else {
+      json['currency_symbol'] = null;
+    }
+    if (this.isEditable != null) {
+      json[r'is_editable'] = this.isEditable;
+    } else {
+      json[r'is_editable'] = null;
+    }
+    if (this.needsProcessing != null) {
+      json[r'needs_processing'] = this.needsProcessing;
+    } else {
+      json[r'needs_processing'] = null;
+    }
+    if (this.needsPayment != null) {
+      json[r'needs_payment'] = this.needsPayment;
+    } else {
+      json[r'needs_payment'] = null;
     }
     if (this.orderKey != null) {
       json[r'order_key'] = this.orderKey;
@@ -711,6 +751,10 @@ class ShopOrder {
         billing: ShopOrder1Billing.fromJson(json[r'billing']),
         shipping: ShopOrder1Shipping.fromJson(json[r'shipping']),
         paymentMethod: mapValueOfType<String>(json, r'payment_method'),
+        currencySymbol: mapValueOfType<String>(json, r'currency_symbol'),
+        isEditable: mapValueOfType<bool>(json, r'is_editable'),
+        needsPayment: mapValueOfType<bool>(json, r'needs_payment'),
+        needsProcessing: mapValueOfType<bool>(json, r'needs_processing'),
         paymentMethodTitle:
             mapValueOfType<String>(json, r'payment_method_title'),
         transactionId: mapValueOfType<String>(json, r'transaction_id'),

@@ -1,3 +1,8 @@
+## 1.0.5
+
+* Fix ShopOrder version property
+* Add new fields to ShopOrder model
+
 ## 1.0.4
 
 * Fix reportsCustomersTotalsGet method
