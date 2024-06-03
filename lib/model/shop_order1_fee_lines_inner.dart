@@ -176,7 +176,7 @@ class ShopOrder1FeeLinesInner {
       return ShopOrder1FeeLinesInner(
         id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
-        amount: mapValueOfType<String>(json, json[r'amount']),
+        amount: mapValueOfType<String>(json, r'amount'),
         taxClass: mapValueOfType<String>(json, r'tax_class'),
         taxStatus:
             ShopOrder1FeeLinesInnerTaxStatusEnum.fromJson(json[r'tax_status']),

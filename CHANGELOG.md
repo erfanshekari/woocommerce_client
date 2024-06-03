@@ -1,3 +1,7 @@
+## 1.0.7
+
+* Fix "amount" property of ShopOrder1FeeLinesInner model
+
 ## 1.0.6
 
 * Fix inner properties of ShopOrder model
