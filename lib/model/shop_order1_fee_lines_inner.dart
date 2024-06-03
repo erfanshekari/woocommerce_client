@@ -21,6 +21,7 @@ class ShopOrder1FeeLinesInner {
     this.totalTax,
     this.taxes = const [],
     this.metaData = const [],
+    this.amount,
   });
 
   /// Item ID.
@@ -77,6 +78,8 @@ class ShopOrder1FeeLinesInner {
   /// Meta data.
   List<ShopCoupon1MetaDataInner> metaData;
 
+  String? amount;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -87,6 +90,7 @@ class ShopOrder1FeeLinesInner {
           other.taxStatus == taxStatus &&
           other.total == total &&
           other.totalTax == totalTax &&
+          other.amount == amount &&
           _deepEquality.equals(other.taxes, taxes) &&
           _deepEquality.equals(other.metaData, metaData);
 
@@ -99,12 +103,13 @@ class ShopOrder1FeeLinesInner {
       (taxStatus == null ? 0 : taxStatus!.hashCode) +
       (total == null ? 0 : total!.hashCode) +
       (totalTax == null ? 0 : totalTax!.hashCode) +
+      (amount == null ? 0 : amount.hashCode) +
       (taxes.hashCode) +
       (metaData.hashCode);
 
   @override
   String toString() =>
-      'ShopOrder1FeeLinesInner[id=$id, name=$name, taxClass=$taxClass, taxStatus=$taxStatus, total=$total, totalTax=$totalTax, taxes=$taxes, metaData=$metaData]';
+      'ShopOrder1FeeLinesInner[id=$id, name=$name, taxClass=$taxClass, taxStatus=$taxStatus, total=$total, totalTax=$totalTax, taxes=$taxes, metaData=$metaData amount=$amount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -117,6 +122,11 @@ class ShopOrder1FeeLinesInner {
       json[r'name'] = this.name;
     } else {
       json[r'name'] = null;
+    }
+    if (this.amount != null) {
+      json[r'amount'] = this.amount;
+    } else {
+      json[r'amount'] = null;
     }
     if (this.taxClass != null) {
       json[r'tax_class'] = this.taxClass;
@@ -166,6 +176,7 @@ class ShopOrder1FeeLinesInner {
       return ShopOrder1FeeLinesInner(
         id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
+        amount: mapValueOfType<String>(json, json[r'amount']),
         taxClass: mapValueOfType<String>(json, r'tax_class'),
         taxStatus:
             ShopOrder1FeeLinesInnerTaxStatusEnum.fromJson(json[r'tax_status']),
