@@ -21,6 +21,7 @@ class ShopOrderTaxLinesInner {
     this.taxTotal,
     this.shippingTaxTotal,
     this.metaData = const [],
+    this.ratePercent,
   });
 
   /// Item ID.
@@ -48,7 +49,7 @@ class ShopOrderTaxLinesInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? rateId;
+  int? rateId;
 
   /// Tax rate label.
   ///
@@ -86,6 +87,8 @@ class ShopOrderTaxLinesInner {
   ///
   String? shippingTaxTotal;
 
+  int? ratePercent;
+
   /// Meta data.
   List<ShopCoupon1MetaDataInner> metaData;
 
@@ -99,6 +102,7 @@ class ShopOrderTaxLinesInner {
           other.label == label &&
           other.compound == compound &&
           other.taxTotal == taxTotal &&
+          other.ratePercent == ratePercent &&
           other.shippingTaxTotal == shippingTaxTotal &&
           _deepEquality.equals(other.metaData, metaData);
 
@@ -111,12 +115,13 @@ class ShopOrderTaxLinesInner {
       (label == null ? 0 : label!.hashCode) +
       (compound == null ? 0 : compound!.hashCode) +
       (taxTotal == null ? 0 : taxTotal!.hashCode) +
+      (ratePercent == null ? 0 : ratePercent.hashCode) +
       (shippingTaxTotal == null ? 0 : shippingTaxTotal!.hashCode) +
       (metaData.hashCode);
 
   @override
   String toString() =>
-      'ShopOrderTaxLinesInner[id=$id, rateCode=$rateCode, rateId=$rateId, label=$label, compound=$compound, taxTotal=$taxTotal, shippingTaxTotal=$shippingTaxTotal, metaData=$metaData]';
+      'ShopOrderTaxLinesInner[id=$id, rateCode=$rateCode, rateId=$rateId, label=$label, compound=$compound, taxTotal=$taxTotal, shippingTaxTotal=$shippingTaxTotal, metaData=$metaData ratePercent=$ratePercent]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -134,6 +139,11 @@ class ShopOrderTaxLinesInner {
       json[r'rate_id'] = this.rateId;
     } else {
       json[r'rate_id'] = null;
+    }
+    if (this.ratePercent != null) {
+      json[r'rate_percent'] = this.ratePercent;
+    } else {
+      json[r'ratePercent'] = null;
     }
     if (this.label != null) {
       json[r'label'] = this.label;
@@ -182,10 +192,11 @@ class ShopOrderTaxLinesInner {
       return ShopOrderTaxLinesInner(
         id: mapValueOfType<int>(json, r'id'),
         rateCode: mapValueOfType<String>(json, r'rate_code'),
-        rateId: mapValueOfType<String>(json, r'rate_id'),
+        rateId: mapValueOfType<int>(json, r'rate_id'),
         label: mapValueOfType<String>(json, r'label'),
         compound: mapValueOfType<bool>(json, r'compound'),
         taxTotal: mapValueOfType<String>(json, r'tax_total'),
+        ratePercent: mapValueOfType<int>(json, r'rate_percent'),
         shippingTaxTotal: mapValueOfType<String>(json, r'shipping_tax_total'),
         metaData: ShopCoupon1MetaDataInner.listFromJson(json[r'meta_data']),
       );
