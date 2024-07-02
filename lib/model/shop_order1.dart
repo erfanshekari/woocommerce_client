@@ -229,10 +229,24 @@ class ShopOrder1 {
       json[r'transaction_id'] = null;
     }
     json[r'meta_data'] = this.metaData;
-    json[r'line_items'] = this.lineItems;
-    json[r'shipping_lines'] = this.shippingLines;
-    json[r'fee_lines'] = this.feeLines;
-    json[r'coupon_lines'] = this.couponLines;
+    if (this.lineItems.isNotEmpty) {
+      json[r'line_items'] = this
+          .lineItems
+          .map((e) => {'product_id': e.id, 'quantity': e.quantity})
+          .toList();
+    }
+
+    if (this.shippingLines.isNotEmpty) {
+      json[r'shipping_lines'] = this
+          .shippingLines
+          .map((e) => {
+                'method_id': e.methodId,
+                'method_title': e.methodTitle,
+                'total': e.total,
+              })
+          .toList();
+    }
+
     if (this.setPaid != null) {
       json[r'set_paid'] = this.setPaid;
     } else {
