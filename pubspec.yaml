@@ -1,5 +1,5 @@
 name: 'woocommerce_client'
-version: '1.0.8'
+version: '1.0.9'
 description: 'Woocommerce Rest API Dart client package'
 homepage: 'https://github.com/erfanshekari/woocommerce_client'
 

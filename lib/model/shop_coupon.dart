@@ -232,7 +232,7 @@ class ShopCoupon {
   List<String> emailRestrictions;
 
   /// List of user IDs (or guest email addresses) that have used the coupon.
-  List<int> usedBy;
+  List<String> usedBy;
 
   /// Meta data.
   List<ShopCoupon1MetaDataInner> metaData;
@@ -487,7 +487,9 @@ class ShopCoupon {
                 .toList(growable: false)
             : const [],
         usedBy: json[r'used_by'] is Iterable
-            ? (json[r'used_by'] as Iterable).cast<int>().toList(growable: false)
+            ? (json[r'used_by'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
         metaData: ShopCoupon1MetaDataInner.listFromJson(json[r'meta_data']),
       );

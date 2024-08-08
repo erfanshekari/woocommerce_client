@@ -1,3 +1,7 @@
+## 1.0.9
+
+* Fix coupons GET method
+
 ## 1.0.8
 
 * Fix post order method

@@ -16,7 +16,7 @@ Dart 2.12 or later
 Include woocommerce_client in your pubspec.yaml file:
 ```yaml
 dependencies:
-  woocommerce_client: ^1.0.8
+  woocommerce_client: ^1.0.9
 
 ```
 
