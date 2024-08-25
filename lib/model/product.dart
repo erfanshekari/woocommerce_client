@@ -1183,6 +1183,7 @@ class ProductTypeEnum {
   static const grouped = ProductTypeEnum._(r'grouped');
   static const external_ = ProductTypeEnum._(r'external');
   static const variable = ProductTypeEnum._(r'variable');
+  static const variation = ProductTypeEnum._(r'variation');
 
   /// List of all possible values in this [enum][ProductTypeEnum].
   static const values = <ProductTypeEnum>[
@@ -1190,6 +1191,7 @@ class ProductTypeEnum {
     grouped,
     external_,
     variable,
+    variation,
   ];
 
   static ProductTypeEnum? fromJson(dynamic value) =>
@@ -1241,6 +1243,8 @@ class ProductTypeEnumTypeTransformer {
           return ProductTypeEnum.external_;
         case r'variable':
           return ProductTypeEnum.variable;
+        case r'variation':
+          return ProductTypeEnum.variation;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

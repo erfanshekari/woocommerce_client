@@ -1,3 +1,11 @@
+## 1.0.11
+
+* Add variation option to ProductTypeEnum
+
+## 1.0.10
+
+* Fix variation issue on POST order
+
 ## 1.0.9
 
 * Fix coupons GET method

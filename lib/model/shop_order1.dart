@@ -230,10 +230,20 @@ class ShopOrder1 {
     }
     json[r'meta_data'] = this.metaData;
     if (this.lineItems.isNotEmpty) {
-      json[r'line_items'] = this
-          .lineItems
-          .map((e) => {'product_id': e.id, 'quantity': e.quantity})
-          .toList();
+      json[r'line_items'] = this.lineItems.map((e) {
+        if (e.variationId == null) {
+          return {
+            'product_id': e.id,
+            'quantity': e.quantity,
+          };
+        } else {
+          return {
+            'product_id': e.id,
+            'quantity': e.quantity,
+            'variation_id': e.variationId,
+          };
+        }
+      }).toList();
     }
 
     if (this.shippingLines.isNotEmpty) {
